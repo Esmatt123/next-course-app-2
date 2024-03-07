@@ -1,14 +1,17 @@
 export async function getAllEvents() {
-    const response = await fetch('https://nextjs-fb-db-default-rtdb.europe-west1.firebasedatabase.app/events/.json')
+    const response = await fetch('https://nextjs-fb-db-default-rtdb.europe-west1.firebasedatabase.app/.json')
     const data = await response.json();
+    const data2 = data.events
     const events = []
 
-    for (const key in data) {
+    for (const key in data2) {
         events.push({
             id: key,
-            ...data[key]
+            ...data2[key]
         })
     }
+
+    
 
     return events;
 }

@@ -3,24 +3,26 @@ import EventLogistics from "@/components/event-detail/event-logistics";
 import EventSummary from "@/components/event-detail/event-summary";
 import { Fragment } from "react";
 import { getEventById, getFeaturedEvents } from "@/helpers/api-utils";
+import Comments from "@/components/input/comments";
+import Head from 'next/head';
 
 
 function EventDetailPage(props) {
     const event = props.selectedEvent;
-
     if (!event) {
         return (<div className="center"><p>Loading...</p></div>)
     }
-    
+
     return (
         <Fragment>
-             <Head>
-            <title>{event.title}</title>
-            <meta name="description" content={event.description} />
-        </Head>
+            <Head>
+                <title>{event.title}</title>
+                <meta name="description" content={event.description} />
+            </Head>
             <EventSummary title={event.title} />
             <EventLogistics date={event.date} address={event.location} image={event.image} imageAlt={event.title} />
             <EventContent><p>{event.description}</p></EventContent>
+            <Comments eventId={event.id} />
         </Fragment>
     )
 }

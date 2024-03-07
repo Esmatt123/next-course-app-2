@@ -1,4 +1,4 @@
-import { getAllEvents } from "@/helpers/api-utils";
+import {getAllEvents} from "@/helpers/api-utils";
 import EventList from "@/components/events/event-list";
 import EventsSearch from "@/components/events/events-search";
 import { Fragment } from "react";
